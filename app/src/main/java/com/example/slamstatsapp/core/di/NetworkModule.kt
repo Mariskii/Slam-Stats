@@ -1,6 +1,7 @@
 package com.example.slamstatsapp.core.di
 
 import com.example.slamstatsapp.data.network.PlayerApiClient
+import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
