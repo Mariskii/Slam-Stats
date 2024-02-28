@@ -1,0 +1,47 @@
+package com.example.slamstatsapp.ui.viewmodel
+
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.slamstatsapp.data.model.PlayerModel
+import com.example.slamstatsapp.domain.GetPlayersUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+//COMUNICA EL VIEW Y EL MODEL CUANDO EL USUARIO INTERACTUA O SE OBTIENE INFORMACION
+@HiltViewModel
+class PlayerViewModel @Inject constructor(
+    private var getPlayersUseCase:GetPlayersUseCase
+) : ViewModel()
+{
+    val playerModel = MutableLiveData<List<PlayerModel>?>()
+
+    private val _searchedPlayers = MutableStateFlow<List<PlayerModel>>(emptyList())
+    var searchedPlayers :StateFlow<List<PlayerModel>> = _searchedPlayers
+
+    fun onCreate()
+    {
+        viewModelScope.launch {
+            val result = getPlayersUseCase.getAllPlayers()
+
+            if(!result.isNullOrEmpty()){
+                playerModel.postValue(result)
+            }
+        }
+    }
+
+    fun searchPlayers(playerName:String)
+    {
+        viewModelScope.launch {
+            val result = getPlayersUseCase.getPlayersByName(playerName)
+
+            if (result.isNotEmpty())
+            {
+                _searchedPlayers.value = result
+            }
+        }
+    }
+}
