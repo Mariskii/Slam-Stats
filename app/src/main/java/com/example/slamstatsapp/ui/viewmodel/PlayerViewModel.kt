@@ -19,8 +19,13 @@ class PlayerViewModel @Inject constructor(
 {
     val playerModel = MutableLiveData<List<PlayerModel>?>()
 
+    //Lista de jugadores buscados
     private val _searchedPlayers = MutableStateFlow<List<PlayerModel>>(emptyList())
     var searchedPlayers :StateFlow<List<PlayerModel>> = _searchedPlayers
+
+    //Jugador buscado por id
+    private val _searchedPlayerById = MutableStateFlow<PlayerModel>(PlayerModel(1,"1","1","1","1","2","2","","",""))
+    var searchedPlayerById :StateFlow<PlayerModel> = _searchedPlayerById
 
     fun onCreate()
     {
@@ -42,6 +47,15 @@ class PlayerViewModel @Inject constructor(
             {
                 _searchedPlayers.value = result
             }
+        }
+    }
+
+    fun searchPlayerById(playerId: Int)
+    {
+        viewModelScope.launch{
+            val result = getPlayersUseCase.getPlayersById(playerId)
+
+            _searchedPlayerById.value = result
         }
     }
 }

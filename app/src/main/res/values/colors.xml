@@ -17,5 +17,6 @@
     <color name="night_sea_blue">#142B73</color>
     <color name="sky_blue">#5288F2</color>
     <color name="flat_blue">#0597F2</color>
+    <color name="gray_white">#C0C0C0</color>
 
 </resources>

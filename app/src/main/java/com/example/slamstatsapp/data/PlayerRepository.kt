@@ -15,4 +15,6 @@ class PlayerRepository @Inject constructor(private val api:PlayerService, privat
     }
 
     suspend fun getPlayersByName(namePlayer: String): List<PlayerModel> {return api.getPlayersByName(namePlayer)}
+
+    suspend fun getPlayerById(idPlayer:Int):PlayerModel{return api.getPlayerById(idPlayer)}
 }

@@ -18,11 +18,19 @@
         <action
             android:id="@+id/action_searchFragment_to_playerFragment"
             app:destination="@id/playerFragment"
+            app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/searchFragment" />
+        <argument
+            android:name="idPlayer"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/playerFragment"
         android:name="com.example.slamstatsapp.ui.view.PlayerView.PlayerFragment"
         android:label="fragment_player"
-        tools:layout="@layout/fragment_player" />
+        tools:layout="@layout/fragment_player" >
+        <argument
+            android:name="idPlayer"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -9,6 +9,7 @@ import android.widget.SearchView.OnQueryTextListener
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.slamstatsapp.databinding.FragmentSearchBinding
 import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
@@ -78,14 +79,10 @@ class SearchFragment : Fragment(), OnQueryTextListener
         adapter.onItemClickListener(object :rvSearchAdapter.OnItemClickListener{
             override fun onItemClick(itemId: Int)
             {
-                Toast.makeText(requireContext(),playerViewModel.searchedPlayers.value[itemId].id.toString(),Toast.LENGTH_SHORT).show()
+                //Preparar el destino y el id que se va a pasar al fragment de jugador
+                findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToPlayerFragment(idPlayer = playerViewModel.searchedPlayers.value[itemId].id))
             }
         })
-    }
-
-    private fun setClickableRecyclerView()
-    {
-
     }
 
     //Método no implementado ya que no necesito hacer nada en este estado

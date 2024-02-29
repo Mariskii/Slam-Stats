@@ -9,4 +9,5 @@ class GetPlayersUseCase @Inject constructor(private val repository:PlayerReposit
 {
     suspend fun getAllPlayers(): List<PlayerModel> = repository.getAllPlayers()
     suspend fun getPlayersByName(playerName:String): List<PlayerModel> = repository.getPlayersByName(playerName)
+    suspend fun getPlayersById(playerId:Int): PlayerModel = repository.getPlayerById(playerId)
 }

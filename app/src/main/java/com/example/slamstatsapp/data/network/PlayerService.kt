@@ -26,4 +26,12 @@ class PlayerService @Inject constructor(private val api:PlayerApiClient)
             response.body() ?: emptyList()
         }
     }
+
+    suspend fun getPlayerById(idPlayer: Int):PlayerModel
+    {
+        return withContext(Dispatchers.IO){
+            val playerResponse:Response<PlayerModel> = api.getPlayerById(idPlayer)
+            playerResponse.body() ?: PlayerModel(0,"1","1","1","1","2","2","","","")
+        }
+    }
 }
