@@ -1,4 +1,4 @@
-package com.example.slamstatsapp.data.network
+package com.example.slamstatsapp.data.network.PlayerNetwork
 
 import com.example.slamstatsapp.data.model.PlayerModel
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.example.slamstatsapp.data.network
+package com.example.slamstatsapp.data.network.PlayerNetwork
 
 import com.example.slamstatsapp.data.model.PlayerModel
 import kotlinx.coroutines.Dispatchers
@@ -6,7 +6,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import javax.inject.Inject
 
-class PlayerService @Inject constructor(private val api:PlayerApiClient)
+class PlayerService @Inject constructor(private val api: PlayerApiClient)
 {
 
     suspend fun getPlayers():List<PlayerModel>

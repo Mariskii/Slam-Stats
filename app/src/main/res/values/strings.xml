@@ -6,9 +6,11 @@
     <string name="trophies_title">Premios:</string>
     <string name="position_title">Posición:</string>
     <string name="height_title">Altura:</string>
-    <string name="weight_title">Posición:</string>
+    <string name="weight_title">Peso:</string>
     <string name="nationality_title">Nacionalidad:</string>
     <string name="tab_item_stats">Estadísticas</string>
     <string name="tab_item_teams">Equipos</string>
     <string name="birth_title">Nacimiento:</string>
+    <string name="tab_player_teams">Equipos</string>
+    <string name="tab_player_stats">Estadísticas</string>
 </resources>

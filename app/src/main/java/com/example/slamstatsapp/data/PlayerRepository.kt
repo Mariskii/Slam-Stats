@@ -2,10 +2,10 @@ package com.example.slamstatsapp.data
 
 import com.example.slamstatsapp.data.model.PlayerModel
 import com.example.slamstatsapp.data.model.PlayerProvider
-import com.example.slamstatsapp.data.network.PlayerService
+import com.example.slamstatsapp.data.network.PlayerNetwork.PlayerService
 import javax.inject.Inject
 
-class PlayerRepository @Inject constructor(private val api:PlayerService, private val playerProvider: PlayerProvider)
+class PlayerRepository @Inject constructor(private val api: PlayerService, private val playerProvider: PlayerProvider)
 {
     suspend fun getAllPlayers():List<PlayerModel>
     {

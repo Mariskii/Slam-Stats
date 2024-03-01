@@ -1,7 +1,7 @@
 package com.example.slamstatsapp.core.di
 
-import com.example.slamstatsapp.data.network.PlayerApiClient
-import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
+import com.example.slamstatsapp.data.network.PlayerNetwork.PlayerApiClient
+import com.example.slamstatsapp.data.network.TrophiesNetwork.TrophiesApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,8 +28,15 @@ class NetworkModule
 
     @Singleton
     @Provides
-    fun providePlayerApiClient(retrofit: Retrofit):PlayerApiClient
+    fun providePlayerApiClient(retrofit: Retrofit): PlayerApiClient
     {
         return retrofit.create(PlayerApiClient::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTrophiesApiClient(retrofit: Retrofit): TrophiesApiClient
+    {
+        return retrofit.create(TrophiesApiClient::class.java)
     }
 }

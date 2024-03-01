@@ -9,9 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.slamstatsapp.R
 import com.example.slamstatsapp.databinding.FragmentPlayerBinding
+import com.example.slamstatsapp.ui.view.PlayerView.RecyclerViews.TrophiesPlayerAdapter
+import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
 import com.example.slamstatsapp.ui.viewmodel.PlayerViewModel
+import com.example.slamstatsapp.ui.viewmodel.TrophiesViewModel
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -21,7 +25,10 @@ class PlayerFragment : Fragment()
 {
     private lateinit var binding: FragmentPlayerBinding
     private val playerViewModel: PlayerViewModel by viewModels()
+    private val trophiesViewModel:TrophiesViewModel by viewModels()
     private val fragmentPlayerargs:PlayerFragmentArgs by navArgs()
+
+    private lateinit var adapterTrophies:TrophiesPlayerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +44,12 @@ class PlayerFragment : Fragment()
         super.onViewCreated(view, savedInstanceState)
         initUI()
         observePlayerResult()
-        playerViewModel.searchPlayerById(fragmentPlayerargs.idPlayer)
-    }
+        observeTrophiesResult()
 
-    override fun onStart()
-    {
-        super.onStart()
-        //playerViewModel.searchPlayerById(fragmentPlayerargs.idPlayer)
+        initTrophiesRecyclerView()
+
+        playerViewModel.searchPlayerById(fragmentPlayerargs.idPlayer)
+        trophiesViewModel.getTrophiesByPlayerId(fragmentPlayerargs.idPlayer)
     }
 
     private fun observePlayerResult()
@@ -51,11 +57,35 @@ class PlayerFragment : Fragment()
         // Recolectar el flujo de estado searchedPlayerById
         lifecycleScope.launch {
             playerViewModel.searchedPlayerById.collect { player ->
-                binding.playerName.text = player.nombreCompleto
+                binding.playerName.text = "#"+player.dorsal+" "+player.nombreCompleto
                 binding.playerPosition.text = player.posicion
+                binding.playerHeight.text = player.altura
+                binding.playerBirth.text = player.fnacimiento
+                binding.playerWeight.text = player.peso
+                binding.playerNationality.text = player.nacionalidad
 
                 if(player.fotoCompleta.isNotEmpty())
                     Picasso.get().load(player.fotoCompleta).resize(binding.playerImage.width, binding.playerImage.height).centerCrop().into(binding.playerImage)
+            }
+        }
+    }
+
+    private fun initTrophiesRecyclerView()
+    {
+        adapterTrophies = TrophiesPlayerAdapter(emptyList())
+        binding.rvPlayerTrophies.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvPlayerTrophies.adapter = adapterTrophies
+    }
+
+    private fun observeTrophiesResult()
+    {
+        lifecycleScope.launch {
+            trophiesViewModel.playerTrophies.collect{trophies ->
+                if (trophies != null)
+                {
+                    adapterTrophies.trophies = trophies.trophies
+                    adapterTrophies.notifyDataSetChanged()
+                }
             }
         }
     }

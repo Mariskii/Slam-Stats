@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.slamstatsapp.databinding.FragmentSearchBinding
 import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
 import com.example.slamstatsapp.ui.viewmodel.PlayerViewModel
+import com.example.slamstatsapp.ui.viewmodel.TrophiesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,7 +23,9 @@ import javax.inject.Inject
 class SearchFragment : Fragment(), OnQueryTextListener
 {
     private lateinit var binding: FragmentSearchBinding
+    //VIEWMODELS
     private val playerViewModel: PlayerViewModel by viewModels()
+
     private lateinit var adapter: rvSearchAdapter
 
     override fun onCreateView(
@@ -38,12 +41,12 @@ class SearchFragment : Fragment(), OnQueryTextListener
     {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        observeResult()
+        observeResultPlayer()
         binding.svPlayers.setOnQueryTextListener(this)
     }
 
 
-    private fun observeResult()
+    private fun observeResultPlayer()
     {
         // Recolectar el flujo de estado searchedPlayers
         lifecycleScope.launch {
