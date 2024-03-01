@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.slamstatsapp.R
+import com.example.slamstatsapp.data.model.PlayerModel
 import com.example.slamstatsapp.databinding.FragmentPlayerBinding
 import com.example.slamstatsapp.ui.view.PlayerView.RecyclerViews.TrophiesPlayerAdapter
 import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
@@ -43,10 +44,12 @@ class PlayerFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        observePlayerResult()
-        observeTrophiesResult()
+
 
         initTrophiesRecyclerView()
+
+        observePlayerResult()
+        observeTrophiesResult()
 
         playerViewModel.searchPlayerById(fragmentPlayerargs.idPlayer)
         trophiesViewModel.getTrophiesByPlayerId(fragmentPlayerargs.idPlayer)
@@ -65,7 +68,10 @@ class PlayerFragment : Fragment()
                 binding.playerNationality.text = player.nacionalidad
 
                 if(player.fotoCompleta.isNotEmpty())
-                    Picasso.get().load(player.fotoCompleta).resize(binding.playerImage.width, binding.playerImage.height).centerCrop().into(binding.playerImage)
+                {
+                   Picasso.get().load(player.fotoCompleta).into(binding.playerImage)
+                }
+
             }
         }
     }

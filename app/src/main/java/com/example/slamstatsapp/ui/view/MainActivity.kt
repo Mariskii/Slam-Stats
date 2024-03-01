@@ -10,6 +10,7 @@ import com.example.slamstatsapp.R
 import com.example.slamstatsapp.databinding.ActivityMainBinding
 import com.example.slamstatsapp.ui.view.HomeView.RecyclewViewPlayerMain.RvMainPageAdapter
 import com.example.slamstatsapp.ui.viewmodel.PlayerViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity()
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private lateinit var bottomNavigationView:BottomNavigationView
 
     //RecyclerView
     private lateinit var adapter: RvMainPageAdapter
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity()
     {
         initNavigation()
     }
+
+
 
     private fun  initNavigation()
     {
