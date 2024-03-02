@@ -1,11 +1,14 @@
 package com.example.slamstatsapp.ui.view.PlayerView
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,9 +20,11 @@ import com.example.slamstatsapp.ui.view.PlayerView.RecyclerViews.TrophiesPlayerA
 import com.example.slamstatsapp.ui.view.SearchView.RecyclerViews.rvSearchAdapter
 import com.example.slamstatsapp.ui.viewmodel.PlayerViewModel
 import com.example.slamstatsapp.ui.viewmodel.TrophiesViewModel
+import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PlayerFragment : Fragment()
@@ -28,7 +33,7 @@ class PlayerFragment : Fragment()
     private val playerViewModel: PlayerViewModel by viewModels()
     private val trophiesViewModel:TrophiesViewModel by viewModels()
     private val fragmentPlayerargs:PlayerFragmentArgs by navArgs()
-
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
     private lateinit var adapterTrophies:TrophiesPlayerAdapter
 
     override fun onCreateView(
@@ -45,12 +50,9 @@ class PlayerFragment : Fragment()
         super.onViewCreated(view, savedInstanceState)
         initUI()
 
-
         initTrophiesRecyclerView()
-
         observePlayerResult()
         observeTrophiesResult()
-
         playerViewModel.searchPlayerById(fragmentPlayerargs.idPlayer)
         trophiesViewModel.getTrophiesByPlayerId(fragmentPlayerargs.idPlayer)
     }
@@ -60,16 +62,16 @@ class PlayerFragment : Fragment()
         // Recolectar el flujo de estado searchedPlayerById
         lifecycleScope.launch {
             playerViewModel.searchedPlayerById.collect { player ->
-                binding.playerName.text = "#"+player.dorsal+" "+player.nombreCompleto
-                binding.playerPosition.text = player.posicion
-                binding.playerHeight.text = player.altura
-                binding.playerBirth.text = player.fnacimiento
-                binding.playerWeight.text = player.peso
-                binding.playerNationality.text = player.nacionalidad
+                binding.playerName.text = "#"+player?.dorsal+" "+player?.nombreCompleto
+                binding.playerPosition.text = player?.posicion
+                binding.playerHeight.text = player?.altura
+                binding.playerBirth.text = player?.fnacimiento
+                binding.playerWeight.text = player?.peso
+                binding.playerNationality.text = player?.nacionalidad
 
-                if(player.fotoCompleta.isNotEmpty())
+                if(!player?.fotoCompleta.isNullOrEmpty())
                 {
-                   Picasso.get().load(player.fotoCompleta).into(binding.playerImage)
+                   Picasso.get().load(player?.fotoCompleta).into(binding.playerImage)
                 }
 
             }
@@ -101,5 +103,25 @@ class PlayerFragment : Fragment()
         binding.backArrow.setOnClickListener{
             findNavController().navigateUp()
         }
+
+        setViewPager()
+        initTabLayout()
+    }
+
+    private fun setViewPager()
+    {
+        viewPagerAdapter= ViewPagerAdapter(this,fragmentPlayerargs.idPlayer)
+        binding.statsTeamsViewPager.adapter = viewPagerAdapter
+    }
+
+    private fun initTabLayout()
+    {
+        TabLayoutMediator(binding.playerTabLayout,binding.statsTeamsViewPager){tab,position->
+                tab.text = when (position) {
+                    0 -> getString(R.string.tab_item_stats)
+                    1 -> getString(R.string.tab_item_teams)
+                    else -> throw IllegalArgumentException("Invalid position")
+                }
+        }.attach()
     }
 }

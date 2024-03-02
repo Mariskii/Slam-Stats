@@ -5,12 +5,11 @@ import com.example.slamstatsapp.data.model.PlayerProvider
 import com.example.slamstatsapp.data.network.PlayerNetwork.PlayerService
 import javax.inject.Inject
 
-class PlayerRepository @Inject constructor(private val api: PlayerService, private val playerProvider: PlayerProvider)
+class PlayerRepository @Inject constructor(private val api: PlayerService)
 {
     suspend fun getAllPlayers():List<PlayerModel>
     {
         val response:List<PlayerModel> = api.getPlayers()
-        playerProvider.players = response
         return response
     }
 

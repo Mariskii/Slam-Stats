@@ -13,4 +13,16 @@
     <string name="birth_title">Nacimiento:</string>
     <string name="tab_player_teams">Equipos</string>
     <string name="tab_player_stats">Estadísticas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stats_season">Temporada</string>
+    <string name="points_per_game">PPP</string>
+    <string name="fouls_per_game">FPP</string>
+    <string name="assists_per_game">APP</string>
+    <string name="rebounds_per_game">RPP</string>
+    <string name="steals_per_game">SPP</string>
+    <string name="field_goal">TC</string>
+    <string name="free_throw_game">TL</string>
+    <string name="blocks_per_game">BLK</string>
+    <string name="played_games">PJ</string>
 </resources>

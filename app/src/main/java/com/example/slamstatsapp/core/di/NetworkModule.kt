@@ -1,13 +1,16 @@
 package com.example.slamstatsapp.core.di
 
 import com.example.slamstatsapp.data.network.PlayerNetwork.PlayerApiClient
+import com.example.slamstatsapp.data.network.StatsNetwork.StatsApiClient
 import com.example.slamstatsapp.data.network.TrophiesNetwork.TrophiesApiClient
+import com.example.slamstatsapp.ui.view.PlayerView.PlayerFragmentArgs
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 //CLASE QUE PREPARARÁ LA INYECCIÓN DE DEPENDENCIAS EN LIBRERIAS O CLASES CON INTERFACES
@@ -38,5 +41,12 @@ class NetworkModule
     fun provideTrophiesApiClient(retrofit: Retrofit): TrophiesApiClient
     {
         return retrofit.create(TrophiesApiClient::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideStatsApiClient(retrofit: Retrofit): StatsApiClient
+    {
+        return retrofit.create(StatsApiClient::class.java)
     }
 }

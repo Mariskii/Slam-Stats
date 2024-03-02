@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.SlamStatsApp" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.SlamStatsApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Cambia a NoActionBar -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -14,5 +14,13 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Theme.PlayerTabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:background">@color/red_nba</item>
+        <item name="android:textColor">@color/dark_red</item>
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+
     </style>
 </resources>
