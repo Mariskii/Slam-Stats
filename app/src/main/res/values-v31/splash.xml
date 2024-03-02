@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SplashScreen.MySplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/blue_nba</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/slamstatslogo</item>
+        <item name="postSplashScreenTheme">@style/Theme.SlamStatsApp</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/mariskilogo</item>
+    </style>
+</resources>

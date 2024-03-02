@@ -25,4 +25,6 @@
     <string name="free_throw_game">TL</string>
     <string name="blocks_per_game">BLK</string>
     <string name="played_games">PJ</string>
+    <string name="search_hint">Buscar jugador…</string>
+    <string name="player_of_the_day_title">Jugador del dia</string>
 </resources>

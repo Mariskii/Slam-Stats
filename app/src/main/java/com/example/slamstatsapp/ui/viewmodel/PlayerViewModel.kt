@@ -23,9 +23,13 @@ class PlayerViewModel @Inject constructor(
     private val _searchedPlayers = MutableStateFlow<List<PlayerModel>>(emptyList())
     var searchedPlayers :StateFlow<List<PlayerModel>> = _searchedPlayers
 
-    //Jugador buscado por id
+    //Jugador buscado por id, usado para playerfragment
     private val _searchedPlayerById = MutableStateFlow<PlayerModel?>(null)
     var searchedPlayerById :StateFlow<PlayerModel?> = _searchedPlayerById
+
+    //Jugador del dia del homefragment
+    private val _playerOfTheDay = MutableStateFlow<PlayerModel?>(null)
+    var playerOfTheDay :StateFlow<PlayerModel?> = _playerOfTheDay
 
     fun onCreate()
     {
@@ -35,6 +39,10 @@ class PlayerViewModel @Inject constructor(
             if(!result.isNullOrEmpty()){
                 playerModel.postValue(result)
             }
+        }
+
+        viewModelScope.launch {
+            _playerOfTheDay.value = getPlayersUseCase.getRandomPlayerById()
         }
     }
 

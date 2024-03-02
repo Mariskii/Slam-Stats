@@ -20,7 +20,7 @@ class TrophiesRepository @Inject constructor(private val api:TrophiesService)
                 createTrophie(trophiesModel?.rings, R.drawable.larry_obrein),
                 createTrophie(trophiesModel?.fmvp, R.drawable.larry_obrein),
                 createTrophie(trophiesModel?.mvp, R.drawable.larry_obrein),
-                createTrophie(trophiesModel?.allStar, R.drawable.larry_obrein),
+                createTrophie(trophiesModel?.allStar, R.drawable.allstar),
                 createTrophie(trophiesModel?.dpoy, R.drawable.larry_obrein),
                 createTrophie(trophiesModel?.roy, R.drawable.larry_obrein)
             ))

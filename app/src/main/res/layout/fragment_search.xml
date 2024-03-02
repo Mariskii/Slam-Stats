@@ -3,13 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.view.SearchView.SearchFragment"
     android:orientation="vertical">
 
-    <SearchView
-        android:id="@+id/svPlayers"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/blue_nba">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp">
+
+            <SearchView
+                android:id="@+id/svPlayers"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:queryHint="@string/search_hint"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearched_players"

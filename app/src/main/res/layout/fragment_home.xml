@@ -7,6 +7,48 @@
     tools:context=".ui.view.HomeView.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:id="@+id/playerOfTheDayTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/player_of_the_day_title"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPlayerOfTheDay"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@+id/playerOfTheDayTitle"
+        app:cardCornerRadius="16dp"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/playerOfTheDayImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/jordan"/>
+
+        <TextView
+            android:id="@+id/playerOfTheDayName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="16sp"
+            android:padding="5dp"
+            tools:text="Michael Jordan"
+            android:textColor="@color/white"
+            android:layout_gravity="bottom"
+            android:gravity="center|bottom"
+            android:background="@drawable/player_of_day_color"/>
+
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/sugerenciesTitle"
         android:layout_width="match_parent"
@@ -15,7 +57,7 @@
         android:textSize="25sp"
         android:layout_margin="5dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvPlayerOfTheDay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -23,6 +65,8 @@
         android:id="@+id/rvSugerencies"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@+id/sugerenciesTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/sugerenciesTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
