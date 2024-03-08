@@ -6,67 +6,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.view.HomeView.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/retryButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        app:backgroundTint="@color/white"
+        android:tint="@color/gray_white"
+        app:borderWidth="3dp"
+        app:srcCompat="@drawable/sync_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/main_load_animation"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/load_animation"
+        android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/playerOfTheDayTitle"
+    <LinearLayout
+        android:id="@+id/homeUI"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/player_of_the_day_title"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvPlayerOfTheDay"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerOfTheDayTitle"
-        app:cardCornerRadius="16dp"
-        android:layout_margin="5dp">
-
-        <ImageView
-            android:id="@+id/playerOfTheDayImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@mipmap/jordan"/>
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        >
 
         <TextView
-            android:id="@+id/playerOfTheDayName"
+            android:id="@+id/playerOfTheDayTitle"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:textSize="16sp"
-            android:padding="5dp"
-            tools:text="Michael Jordan"
-            android:textColor="@color/white"
-            android:layout_gravity="bottom"
-            android:gravity="center|bottom"
-            android:background="@drawable/player_of_day_color"/>
+            android:layout_height="wrap_content"
+            android:text="@string/player_of_the_day_title"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp" />
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPlayerOfTheDay"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/sugerenciesTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sugerencies"
-        android:textSize="25sp"
-        android:layout_margin="5dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/cvPlayerOfTheDay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/playerOfTheDayImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@mipmap/jordan"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSugerencies"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@+id/sugerenciesTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:id="@+id/playerOfTheDayName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textSize="16sp"
+                android:padding="5dp"
+                tools:text="Michael Jordan"
+                android:textColor="@color/white"
+                android:layout_gravity="bottom"
+                android:gravity="center|bottom"
+                android:background="@drawable/player_of_day_color"/>
 
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/sugerenciesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sugerencies"
+            android:textSize="25sp"
+            android:layout_margin="5dp"
+            android:textStyle="bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSugerencies"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

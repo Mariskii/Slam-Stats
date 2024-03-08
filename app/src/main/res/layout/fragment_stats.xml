@@ -7,8 +7,10 @@
     tools:context=".ui.view.PlayerView.PlayerStats.StatsFragment">
 
     <HorizontalScrollView
+        android:id="@+id/statsContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/player_of_day_color">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -7,4 +7,8 @@
     <item android:id="@+id/searchFragment"
         android:title="@string/search"
         android:icon="@drawable/search_icon"/>
+
+    <item android:id="@+id/userFragment2"
+        android:title="@string/user"
+        android:icon="@drawable/people"/>
 </menu>

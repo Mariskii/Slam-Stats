@@ -3,6 +3,7 @@
     <string name="sugerencies">Sugerencias</string>
     <string name="home">Inicio</string>
     <string name="search">Buscar</string>
+    <string name="user">Usuario</string>
     <string name="trophies_title">Premios:</string>
     <string name="position_title">Posición:</string>
     <string name="height_title">Altura:</string>
@@ -27,4 +28,5 @@
     <string name="played_games">PJ</string>
     <string name="search_hint">Buscar jugador…</string>
     <string name="player_of_the_day_title">Jugador del dia</string>
+    <string name="connection_error">Ha habido un error en la conexión</string>
 </resources>

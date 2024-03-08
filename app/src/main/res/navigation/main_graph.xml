@@ -33,4 +33,9 @@
             android:name="idPlayer"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/userFragment2"
+        android:name="com.example.slamstatsapp.ui.view.UserView.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" />
 </navigation>
