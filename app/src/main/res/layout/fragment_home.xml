@@ -95,6 +95,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSugerencies"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="160dp"
+            android:fadingEdge="horizontal"
+            android:requiresFadingEdge="horizontal"
+            android:fadingEdgeLength="30dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

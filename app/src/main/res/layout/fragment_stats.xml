@@ -10,7 +10,9 @@
         android:id="@+id/statsContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/player_of_day_color">
+        android:fadingEdge="horizontal"
+        android:requiresFadingEdge="horizontal"
+        android:fadingEdgeLength="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,14 +51,7 @@
                     android:layout_weight="1"
                     android:textStyle="bold"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:text="@string/fouls_per_game"
-                    android:gravity="center"
-                    android:paddingHorizontal="8dp"
-                    android:layout_weight="1"
-                    android:textStyle="bold"/>
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,6 +83,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:text="@string/blocks_per_game"
+                    android:gravity="center"
+                    android:paddingHorizontal="8dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
                     android:text="@string/field_goal"
                     android:gravity="center"
                     android:paddingHorizontal="8dp"
@@ -106,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="@string/steals_per_game"
+                    android:text="@string/three_points_made"
                     android:gravity="center"
                     android:paddingHorizontal="8dp"
                     android:layout_weight="1"
@@ -115,7 +119,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="@string/blocks_per_game"
+                    android:text="@string/three_points_made"
                     android:gravity="center"
                     android:paddingHorizontal="8dp"
                     android:layout_weight="1"
@@ -125,7 +129,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvStats"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:fadingEdge="vertical"
+                android:requiresFadingEdge="vertical"
+                android:fadingEdgeLength="50dp"/>
 
         </LinearLayout>
 

@@ -180,7 +180,11 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPlayerTrophies"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:fadingEdge="horizontal"
+                    android:requiresFadingEdge="horizontal"
+                    android:fadingEdgeLength="40dp"
+                    android:theme="@style/Theme.FadingTrophies"/>
             </LinearLayout>
 
             <com.google.android.material.tabs.TabLayout
@@ -204,7 +208,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/statsTeamsViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"/>
+                android:layout_height="300dp" />
 
         </LinearLayout>
 

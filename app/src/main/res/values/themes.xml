@@ -21,6 +21,9 @@
         <item name="android:textColor">@color/dark_red</item>
         <item name="tabIndicatorColor">@color/white</item>
         <item name="tabSelectedTextColor">@color/white</item>
+    </style>
 
+    <style name="Theme.FadingTrophies" parent="Theme.AppCompat.Light">
+        <item name="android:colorEdgeEffect">@color/blue_nba</item>
     </style>
 </resources>
